@@ -23,5 +23,3 @@ Folder: /(root)
 ```text
 https://nojaky.github.io
 ```
-
-Google AdSense 코드는 사이트 승인 절차를 시작할 때 발급된 실제 코드를 확인한 후 추가합니다.
