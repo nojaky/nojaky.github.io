@@ -87,6 +87,7 @@
           <button class="admin-btn" id="previewBtn" type="button">미리보기</button>
           <button class="admin-btn secondary" id="downloadBtn" type="button">글 HTML 저장</button>
           <button class="admin-btn gray" id="snippetBtn" type="button">목록 카드 코드 저장</button>
+          <button class="admin-btn gray" id="sitemapBtn" type="button">사이트맵 코드 저장</button>
         </div>
       </div>
 
@@ -96,6 +97,10 @@
         <h2 style="margin-top:22px">blog/index.html에 추가할 카드 코드</h2>
         <div id="snippet" class="snippet-box"></div>
         <p class="hint">현재 블로그 인덱스의 <strong>전체보기 + 카테고리 필터</strong> 방식에 맞춰 <code>data-category</code>와 <code>data-date</code>가 포함된 카드 코드로 생성됩니다.</p>
+
+        <h2 style="margin-top:22px">sitemap.xml에 추가할 URL 코드</h2>
+        <div id="sitemapSnippet" class="snippet-box"></div>
+        <p class="hint"><strong>sitemap.xml</strong> 파일의 <code>&lt;/urlset&gt;</code> 바로 위에 붙여넣으면 됩니다. 새 글을 올릴 때는 글 HTML, blog/index.html 카드, sitemap.xml URL을 함께 반영하는 것이 좋습니다.</p>
       </div>
     </section>
   </main>
@@ -250,10 +255,15 @@
       return `<article class="post-list-item" data-category="${escapeHtml(categoryId)}" data-date="${escapeHtml(data.date)}">\n  <p class="post-category">${escapeHtml(data.category)}</p>\n  <p class="post-date">${formatDate(data.date)}</p>\n  <h2><a href="${escapeHtml(data.slug)}.html">${escapeHtml(data.title)}</a></h2>\n  <p>${escapeHtml(data.summary)}</p>\n  <a class="read-more" href="${escapeHtml(data.slug)}.html">본문 읽기</a>\n</article>`;
     }
 
+    function makeSitemapEntry(data) {
+      return `<url>\n  <loc>https://nojaky.github.io/blog/${escapeHtml(data.slug)}.html</loc>\n  <lastmod>${escapeHtml(data.date)}</lastmod>\n  <changefreq>monthly</changefreq>\n  <priority>0.7</priority>\n</url>`;
+    }
+
     function updatePreview() {
       const data = getData();
       $('preview').innerHTML = `<article>${makeArticleInner(data)}</article>`;
       $('snippet').textContent = makeSnippet(data);
+      $('sitemapSnippet').textContent = makeSitemapEntry(data);
       return data;
     }
 
@@ -437,6 +447,10 @@
     $('snippetBtn').addEventListener('click', () => {
       const data = updatePreview();
       downloadText(`${data.slug}-blog-index-card.txt`, makeSnippet(data), 'text/plain');
+    });
+    $('sitemapBtn').addEventListener('click', () => {
+      const data = updatePreview();
+      downloadText(`${data.slug}-sitemap-url.txt`, makeSitemapEntry(data), 'text/plain');
     });
 
     $('title').value = '카페 운영자가 매일 확인하면 좋은 숫자들';
