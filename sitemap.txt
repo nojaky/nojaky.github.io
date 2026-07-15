@@ -20,3 +20,4 @@ https://nojaky.github.io/drink-cost-calculator/
 https://nojaky.github.io/espresso-control-web/
 https://nojaky.github.io/brewing-control-web/
 https://nojaky.github.io/Global-Coffee-Price-Index/
+https://nojaky.github.io/wage-calculator/
