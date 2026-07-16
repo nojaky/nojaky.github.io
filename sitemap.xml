@@ -4,7 +4,7 @@
     <loc>https://nojaky.github.io/inedx.html</loc>
     <lastmod>2026-07-12T10:43:20Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nojaky.github.io/Global-Coffee-Price-Index/inedx.html</loc>
@@ -110,12 +110,6 @@
   </url>
   <url>
     <loc>https://nojaky.github.io/espresso-control-web/inedx.html</loc>
-    <lastmod>2026-07-12T10:43:20Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://nojaky.github.io/index.html</loc>
     <lastmod>2026-07-12T10:43:20Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
